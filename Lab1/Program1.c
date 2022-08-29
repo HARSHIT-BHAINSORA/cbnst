@@ -13,7 +13,7 @@ int main(){
 	printf("Enter approx value = ");	
 	scanf("%f" , &a_val);
 	
-	abError = t_val - a_val;
+	abError = fabs(t_val - a_val);
 	
 	reError = abError / t_val;
 	
