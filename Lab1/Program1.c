@@ -1,7 +1,7 @@
 // WAP IN C TO DEDUCE ERROR  IN Involved ANY POLYNOMIAL EQUATION .
 
 #include<stdio.h>
-#include<stdlib.h>
+#include<math.h>
 
 
 int main(){
