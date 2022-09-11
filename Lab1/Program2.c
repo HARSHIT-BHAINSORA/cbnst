@@ -1,48 +1,52 @@
 #include <stdio.h>
 #include <math.h>
 
-float polyFunc(float x){
-     return (x*x*x) - (5*x) +1;
-     
-}
-
-
-void calbisector(float a , float b ,float allowed_error)
+float polyFunc(float x)
 {
-    float x = (a + b) /2;
-    
-    printf("The Roots are %f  , %f  and the  values of x is %f  , %f\n" ,
-    a , b, x , polyFunc(x) );
-    
-    if(fabs(polyFunc(x)) <= allowed_error){
-        printf("Root will be %f" , x);
-        return ;
-    }
-    
-    if(polyFunc(a) * polyFunc(x) < 0){
-        calbisector(a , x , allowed_error);
-    }
-    else if(polyFunc(x) * polyFunc(b) < 0){
-        calbisector(x , b , allowed_error);
-    }
+    return pow(x, 3) - 5 * x + 1;
 }
 
+int steps = 0;
+void calBisection(float a, float b, float errAllow)
+{
+    float x = (a + b) / 2;
+    printf("The Roots are %f  , %f  and the  values of x is %f  , %f\n", a, b, x, polyFunc(x));
+    steps++;
+    if (fabs(polyFunc(x)) <= errAllow)
+    {
+        printf("The root of given Equation is -  %f \n", x);
+        printf("Steps are - %d", steps);
+        return;
+    }
 
-int main() {
-   
-   float a , b , allowed_error = 0.0001 ;
-   
-   printf("Enter the any two roots of Equations ");
-   scanf("%f %f" , &a , &b);
-   
-   if(polyFunc(a) * polyFunc(b) < 0){
-       printf("Roots are accepted ... \n");
-       
-       calbisector(a , b , allowed_error );
-   }
-   else{
-       printf("Invalid Roots...");
-   }
+    if (polyFunc(a) * polyFunc(x) < 0)
+        calBisection(a, x, errAllow);
+    else if (polyFunc(x) * polyFunc(b) < 0)
+        calBisection(x, b, errAllow);
+}
 
+int main()
+{
+
+    float a, b, errAllow;
+
+    printf("The equation is =  x^3 - 5*x + 1 \n");
+
+    printf("Enter the first root = ");
+    scanf("%f", &a);
+
+    printf("Enter the second root = ");
+    scanf("%f", &b);
+    if (polyFunc(a) * polyFunc(b) < 0)
+    {
+        printf("Roots are accepted !!! \n");
+
+        printf("Enter the Allowed Error - ");
+        scanf("%f", &errAllow);
+
+        calBisection(a, b, errAllow);
+    }
+    else
+        printf("Opps Invalid roots !!!");
     return 0;
 }
