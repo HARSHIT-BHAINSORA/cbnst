@@ -53,3 +53,6 @@ int main(){
     }
     return ;
 }
+
+// float ans = log10(x) + 0.43429;
+// x*log10(x) - 1.2; 
