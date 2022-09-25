@@ -37,7 +37,7 @@ int main(){
     printf("Enter guessed range  = ");
     scanf("%f%f" , &a, &b);
     
-    if(polyFunc(a) * polyFunc(b))
+    if(polyFunc(a) * polyFunc(b) < 0)
     {
         float x;
         printf("Root are accepted !!!\n");
