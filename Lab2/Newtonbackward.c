@@ -1,9 +1,8 @@
 #include<stdio.h>
-#include<math.h>
 
 int main(){
 
-    // step 1 : take input of given table 
+    // step 1 : user input
 
     int n  , fact = 1;
     float x , u , y , newU ;
@@ -38,30 +37,31 @@ int main(){
     }
 
     // Print
+    printf("\n\nx \t\t  y \t  ∇1 \t  ∇2 \t  ∇3 \t  ∇4\n");
     for(int i = 0 ; i < n ; i++)
     {
         for(int j = 0 ; j <= n-i ; j++)
         {
-            printf("%0.2f " , arr[i][j]);
+            printf("%0.2f\t" , arr[i][j]);
         }
         printf("\n");
     }
-
-    // step 3 : find u  , x = a + uh so , u = x-a/h;
-
-    u = (x - arr[0][0]) / (arr[1][0]-arr[0][0]);
-
-    newU = u;
-    y = arr[0][1]; // first term 
     
 
-    for(int i = 2 ; i < n+1 ; i++)
+    u = (x - arr[n-1][0]) / (arr[1][0] - arr[0][0]);
+    y = arr[n-1][1];
+    newU = u;
+
+    int j = 2; // col tracker
+
+    for(int i = n-2 ; i >= 0 ; i--)
     {
-        y = y + (newU * arr[0][i]) / fact;
-        fact = fact*i;
-        newU = newU*(u-(i-1));
+        y = y + (newU * arr[i][j])/fact;
+        fact = fact * j;
+        newU = newU *(u +(j-1));
+        j++;
     }
 
-    printf("The value of x and y is = %0.2f and %0.2f" , x , y);
+    printf("\n\nThe value of x and y is = %0.2f and %0.2f" , x , y);
     return 0;
 }
