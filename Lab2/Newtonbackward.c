@@ -7,7 +7,7 @@ int main(){
     int n  , fact = 1;
     float x , u , y , newU ;
 
-    printf("Enter the of n = ");
+    printf("Enter the value of n = ");
     scanf("%d" , &n);
 
     // reason of n+1 col is at max diff. table may extent to that limit.
