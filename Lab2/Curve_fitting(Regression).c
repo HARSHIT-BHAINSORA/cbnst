@@ -40,7 +40,7 @@ int main()
     Sy = Sy/n;
     float z = (byx*Sx)-Sy;
 
-    printf("The Regression Line of y and x in \n");
+    printf("The Regression Line of y on x is \n");
     printf("y = (%0.4f)*x - (%0.4f)", byx ,z);
     return 0;
 } 
